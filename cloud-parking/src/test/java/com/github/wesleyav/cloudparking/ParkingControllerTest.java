@@ -13,7 +13,7 @@ import com.github.wesleyav.cloudparking.controller.dto.ParkingCreateDTO;
 import io.restassured.RestAssured;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ParkingControllerIT {
+public class ParkingControllerTest extends AbstractContainerBase {
 
 	@org.springframework.boot.test.web.server.LocalServerPort
 
