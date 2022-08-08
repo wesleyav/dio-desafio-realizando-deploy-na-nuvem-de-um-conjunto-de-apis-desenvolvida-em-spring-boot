@@ -44,7 +44,7 @@ public class ParkingController {
 	@GetMapping(value = "/{id}")
 	@Operation(summary = "Endpoint to list parking by id")
 	public ResponseEntity<ParkingDTO> findById(@PathVariable String id) {
-		Parking parking = parkingService.findById(id);
+		Parking parking = parkingService.findById(id);		
 		ParkingDTO result = parkingMapper.toParkingDTO(parking);
 		return ResponseEntity.ok(result);
 	}
