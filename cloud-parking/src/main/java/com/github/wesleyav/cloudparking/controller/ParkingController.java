@@ -17,8 +17,12 @@ import com.github.wesleyav.cloudparking.controller.mapper.ParkingMapper;
 import com.github.wesleyav.cloudparking.model.Parking;
 import com.github.wesleyav.cloudparking.service.ParkingService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping(value = "/parking")
+@Tag(name = "ParkingController")
 public class ParkingController {
 
 	private final ParkingService parkingService;
@@ -30,6 +34,7 @@ public class ParkingController {
 	}
 
 	@GetMapping
+	@Operation(summary = "Endpoint to list parkings")
 	public ResponseEntity<List<ParkingDTO>> findAll() {
 		List<Parking> parkingList = parkingService.findAll();
 		List<ParkingDTO> result = parkingMapper.toParkingDTOList(parkingList);
@@ -37,6 +42,7 @@ public class ParkingController {
 	}
 
 	@GetMapping(value = "/{id}")
+	@Operation(summary = "Endpoint to list parking by id")
 	public ResponseEntity<ParkingDTO> findById(@PathVariable String id) {
 		Parking parking = parkingService.findById(id);
 		ParkingDTO result = parkingMapper.toParkingDTO(parking);
@@ -44,6 +50,7 @@ public class ParkingController {
 	}
 
 	@PostMapping
+	@Operation(summary = "Endpoint to create parking")
 	public ResponseEntity<ParkingDTO> create(@RequestBody ParkingCreateDTO dto) {
 		Parking parkingCreate = parkingMapper.toParkingCreate(dto);
 		Parking parking = parkingService.create(parkingCreate);
